@@ -390,6 +390,7 @@ a:hover {
         flex-direction: column;
     }
 
+    /* En móvil el orden es el del HTML: foto y contacto primero */
     .sidebar {
         border-right: none;
         border-bottom: 1px solid var(--dark-border);
@@ -397,12 +398,6 @@ a:hover {
 
     .main-content {
         padding: 36px 28px;
-        order: -1; /* En móvil, nombre y perfil primero; contacto al final */
-    }
-
-    .sidebar {
-        border-bottom: none;
-        border-top: 1px solid var(--dark-border);
     }
 }
 
@@ -449,7 +444,7 @@ a:hover {
 @media print {
     @page {
         size: A4;
-        margin: 10mm 10mm;
+        margin: 8mm 10mm;
     }
 
     /* El PDF siempre sale en claro, aunque la pantalla esté en oscuro */
@@ -541,6 +536,7 @@ a:hover {
 
     .main-content {
         padding: 6px 0 0 20px;
+        order: -1; /* en el PDF la columna principal va a la izquierda */
     }
 
     .cv-header h1 {
@@ -571,7 +567,7 @@ a:hover {
         border: 1px solid #9cc9b9;
         color: #111;
         font-size: 7.5pt;
-        padding: 1px 7px;
+        padding: 1px 5px;
     }
 
     .item,
@@ -605,7 +601,8 @@ a:hover {
         margin-top: 4px;
     }
 
-    .project .links a::after {
+    /* Solo la demo muestra la URL; la del código ya está en el contacto */
+    .project .links a:first-child::after {
         content: " (" attr(href) ")";
         font-weight: 400;
         color: #555;
